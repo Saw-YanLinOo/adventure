@@ -25,7 +25,7 @@ class Adventure extends FlameGame
     showJoystick = Platform.isAndroid || Platform.isIOS;
     await images.loadAllImages();
 
-    final world = Level(levelName: "level-01", player: player);
+    final world = Level(levelName: "level-02", player: player);
 
     cam = CameraComponent.withFixedResolution(
         world: world, width: 640, height: 360);

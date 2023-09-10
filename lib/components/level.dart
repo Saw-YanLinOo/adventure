@@ -22,16 +22,16 @@ class Level extends World {
 
     add(level);
 
-    final spawnPointsLayer = level.tileMap.getLayer<ObjectGroup>("Spawnpoint");
+    final spawnPointsLayer = level.tileMap.getLayer<ObjectGroup>("Spawnpoints");
     if (spawnPointsLayer != null) {
       for (final spawnPoint in spawnPointsLayer.objects) {
         switch (spawnPoint.class_) {
           case 'Player':
-            {
-              player.position = Vector2(spawnPoint.x, spawnPoint.y);
-              add(player);
-              break;
-            }
+            player.position = Vector2(spawnPoint.x, spawnPoint.y);
+            add(player);
+            break;
+
+          default:
         }
       }
     }
@@ -43,7 +43,7 @@ class Level extends World {
           case 'Platform':
             final platform = CollisionBlock(
               position: Vector2(collision.x, collision.y),
-              size: Vector2(collision.x, collision.y),
+              size: Vector2(collision.width, collision.height),
               isPlaform: true,
             );
             collisionBlocks.add(platform);
@@ -52,7 +52,7 @@ class Level extends World {
           default:
             final block = CollisionBlock(
               position: Vector2(collision.x, collision.y),
-              size: Vector2(collision.x, collision.y),
+              size: Vector2(collision.width, collision.height),
             );
             collisionBlocks.add(block);
             add(block);

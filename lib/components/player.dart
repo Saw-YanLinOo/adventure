@@ -32,7 +32,7 @@ class Player extends SpriteAnimationGroupComponent
   late final SpriteAnimation fallingAnimation;
 
   final double _gravity = 9.8;
-  final double _jumpForce = 460;
+  final double _jumpForce = 300;
   final double _terminalVelocity = 300;
 
   double horizontalMovement = 0;
@@ -126,7 +126,7 @@ class Player extends SpriteAnimationGroupComponent
   void _updatePlayerMovement(double dt) {
     if (hasJumped && isOnGround) _playerJump(dt);
 
-    if (velocity.y > _gravity) isOnGround = false;
+    // if (velocity.y > _gravity) isOnGround = false;
 
     velocity.x = horizontalMovement * moveSpeed;
     position.x += velocity.x * dt;
@@ -148,17 +148,11 @@ class Player extends SpriteAnimationGroupComponent
       flipHorizontallyAroundCenter();
     }
 
-    if (velocity.x > 0 || velocity.x < 0) {
-      playerState = PlayerState.running;
-    }
+    if (velocity.x > 0 || velocity.x < 0) playerState = PlayerState.running;
 
-    if (velocity.y > _gravity) {
-      playerState = PlayerState.falling;
-    }
+    if (velocity.y > 0) playerState = PlayerState.falling;
 
-    if (velocity.y < 0) {
-      playerState = PlayerState.jumping;
-    }
+    if (velocity.y < 0) playerState = PlayerState.jumping;
 
     current = playerState;
   }
@@ -166,7 +160,7 @@ class Player extends SpriteAnimationGroupComponent
   void _checkHorizontalCollisions() {
     for (final block in collisionBlocks) {
       if (!block.isPlaform) {
-        if (checkCollection(this, block)) {
+        if (checkCollision(this, block)) {
           if (velocity.x > 0) {
             velocity.x = 0;
             position.x = block.x - hitbox.offsetX - hitbox.width;
@@ -192,7 +186,7 @@ class Player extends SpriteAnimationGroupComponent
     for (final block in collisionBlocks) {
       if (block.isPlaform) {
         // handle on platform
-        if (checkCollection(this, block)) {
+        if (checkCollision(this, block)) {
           if (velocity.y > 0) {
             velocity.y = 0;
             position.y = block.y - hitbox.height - hitbox.offsetY;
@@ -201,7 +195,7 @@ class Player extends SpriteAnimationGroupComponent
           }
         }
       } else {
-        if (checkCollection(this, block)) {
+        if (checkCollision(this, block)) {
           if (velocity.y > 0) {
             velocity.y = 0;
             position.y = block.y - hitbox.height - hitbox.offsetY;
