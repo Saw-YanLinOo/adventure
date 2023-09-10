@@ -25,7 +25,7 @@ class Adventure extends FlameGame
     showJoystick = Platform.isAndroid || Platform.isIOS;
     await images.loadAllImages();
 
-    final world = Level(levelName: "level-02", player: player);
+    final world = Level(levelName: "level-01", player: player);
 
     cam = CameraComponent.withFixedResolution(
         world: world, width: 640, height: 360);
@@ -70,15 +70,15 @@ class Adventure extends FlameGame
       case JoystickDirection.left ||
             JoystickDirection.upLeft ||
             JoystickDirection.downLeft:
-        player.playerDirection = PlayerDirection.left;
+        player.horizontalMovement = -1;
         break;
       case JoystickDirection.right ||
             JoystickDirection.upRight ||
             JoystickDirection.downRight:
-        player.playerDirection = PlayerDirection.right;
+        player.horizontalMovement = 1;
         break;
       default:
-        player.playerDirection = PlayerDirection.none;
+        player.horizontalMovement = 0;
         break;
     }
   }

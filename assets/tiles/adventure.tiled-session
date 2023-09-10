@@ -7,10 +7,68 @@
     "expandedProjectPaths": [
         "."
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "/Users/cid/Downloads/Level-01.tmx": {
+            "scale": 0.8223437499999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 327.11381341440244,
+                "y": 283.3365000950028
+            }
+        },
+        "/Users/cid/Downloads/Level-02 (1).tmx": {
+            "scale": 0.8223437499999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 321.03363100893023,
+                "y": 184.8375451263538
+            }
+        },
+        "/Users/cid/Downloads/Level-03.tmx": {
+            "scale": 0.8223437499999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 321.03363100893023,
+                "y": 212.80638419152575
+            }
+        },
+        "/Users/cid/Downloads/Pixel Adventure.tsx": {
+            "scaleInDock": 1
+        },
+        "/Users/cid/projects/flutter/pixel_adventure/assets/tiles/Level-01.tmx": {
+            "scale": 0.8223437499999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 285.76857305719176,
+                "y": 205.51016530495912
+            }
+        },
+        "/Users/cid/projects/flutter/pixel_adventure/assets/tiles/Level-02.tmx": {
+            "scale": 0.82,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 321.9512195121951,
+                "y": 185.36585365853657
+            }
+        },
+        "/Users/cid/projects/flutter/pixel_adventure/assets/tiles/Pixel Adventure.tsx": {
+            "scaleInDock": 1
+        },
         "Adventure.tsx": {
             "scaleInDock": 0.6618,
             "scaleInEditor": 1
+        },
+        "Pixel Adventure.tsx": {
+            "scaleInDock": 1
+        },
+        "level-00.tmx": {
+            "scale": 0.8223437499999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 277.25631768953065,
+                "y": 204.29412882386472
+            }
         },
         "level-01.tmx": {
             "expandedObjectLayers": [
@@ -19,8 +77,36 @@
             "scale": 0.677,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 288.03545051698666,
-                "y": 251.84638109305754
+                "x": 351.55096011816835,
+                "y": 290.9896602658789
+            }
+        },
+        "level-02.tmx": {
+            "expandedObjectLayers": [
+                3,
+                2
+            ],
+            "scale": 1.0276,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 325.0291942390035,
+                "y": 278.3184118333982
+            }
+        },
+        "level-04.tmx": {
+            "scale": 0.8223437499999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 319.81759452783587,
+                "y": 183.62150864525935
+            }
+        },
+        "level-05.tmx": {
+            "scale": 0.8223437499999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 317.38552156564697,
+                "y": 366.0269808094243
             }
         }
     },
@@ -30,13 +116,22 @@
     "map.tileWidth": 16,
     "map.width": 40,
     "openFiles": [
-        "Adventure.tsx",
+        "level-00.tmx",
         "level-01.tmx"
     ],
     "project": "adventure.tiled-project",
     "recentFiles": [
+        "level-00.tmx",
+        "level-01.tmx",
+        "/Users/cid/projects/flutter/pixel_adventure/assets/tiles/Level-01.tmx",
+        "/Users/cid/projects/flutter/pixel_adventure/assets/tiles/Level-02.tmx",
         "Adventure.tsx",
-        "level-01.tmx"
+        "level-05.tmx",
+        "level-02.tmx",
+        "level-04.tmx",
+        "/Users/cid/Downloads/Level-01.tmx",
+        "/Users/cid/Downloads/Level-03.tmx",
+        "/Users/cid/Downloads/Level-02 (1).tmx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }
