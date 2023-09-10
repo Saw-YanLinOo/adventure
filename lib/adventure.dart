@@ -9,7 +9,7 @@ import 'package:adventure/components/level.dart';
 import 'package:flutter/material.dart';
 
 class Adventure extends FlameGame
-    with HasKeyboardHandlerComponents, DragCallbacks {
+    with HasKeyboardHandlerComponents, DragCallbacks, HasCollisionDetection {
   final Player player = Player();
   late final CameraComponent cam;
   late final JoystickComponent joystick;

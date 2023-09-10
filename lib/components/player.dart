@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:adventure/adventure.dart';
 import 'package:adventure/components/collision_block.dart';
-import 'package:adventure/components/player_hitbox.dart';
+import 'package:adventure/components/custom_hitbox.dart';
+import 'package:adventure/components/fruit.dart';
 import 'package:adventure/components/utils.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -17,7 +18,7 @@ enum PlayerState {
 }
 
 class Player extends SpriteAnimationGroupComponent
-    with HasGameRef<Adventure>, KeyboardHandler {
+    with HasGameRef<Adventure>, KeyboardHandler, CollisionCallbacks {
   final String character;
 
   Player({
@@ -45,7 +46,7 @@ class Player extends SpriteAnimationGroupComponent
 
   bool isFacingRight = true;
 
-  PlayerHitbox hitbox = PlayerHitbox(
+  CustomHitbox hitbox = CustomHitbox(
     offsetX: 10,
     offsetY: 4,
     width: 14,
@@ -56,7 +57,7 @@ class Player extends SpriteAnimationGroupComponent
   FutureOr<void> onLoad() {
     _loadAllAnimation();
 
-    debugMode = kDebugMode;
+    // debugMode = kDebugMode;
 
     add(RectangleHitbox(
       position: Vector2(hitbox.offsetX, hitbox.offsetY),
@@ -91,6 +92,16 @@ class Player extends SpriteAnimationGroupComponent
     hasJumped = keysPressed.contains(LogicalKeyboardKey.space);
 
     return super.onKeyEvent(event, keysPressed);
+  }
+
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    if (other is Fruit) {
+      // handle collision
+      other.collidedWithPlayer();
+    }
+
+    super.onCollision(intersectionPoints, other);
   }
 
   void _loadAllAnimation() async {
