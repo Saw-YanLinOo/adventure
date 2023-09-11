@@ -22,7 +22,7 @@ class Adventure extends FlameGame
 
   @override
   FutureOr<void> onLoad() async {
-    showJoystick = Platform.isAndroid || Platform.isIOS;
+    //showJoystick = Platform.isAndroid || Platform.isIOS;
     await images.loadAllImages();
 
     final world = Level(levelName: "level-02", player: player);
