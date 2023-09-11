@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "level-01.tmx",
+    "activeFile": "level-00.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -66,12 +66,13 @@
             "scale": 0.8223437499999999,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 321.03363100893023,
-                "y": 176.93330799923996
+                "x": 277.8643359300779,
+                "y": 204.90214706441193
             }
         },
         "level-01.tmx": {
             "expandedObjectLayers": [
+                3,
                 2
             ],
             "scale": 0.677,
@@ -86,11 +87,11 @@
                 3,
                 2
             ],
-            "scale": 2.5518,
-            "selectedLayer": 2,
+            "scale": 1.1104,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 167.72474331844188,
-                "y": 295.67364213496353
+                "x": 319.25432276657057,
+                "y": 185.9690201729107
             }
         },
         "level-04.tmx": {
@@ -117,17 +118,18 @@
     "map.width": 40,
     "openFiles": [
         "level-00.tmx",
-        "level-01.tmx"
+        "level-01.tmx",
+        "level-02.tmx"
     ],
     "project": "adventure.tiled-project",
     "recentFiles": [
-        "level-00.tmx",
+        "level-02.tmx",
         "level-01.tmx",
+        "level-00.tmx",
         "/Users/cid/projects/flutter/pixel_adventure/assets/tiles/Level-01.tmx",
         "/Users/cid/projects/flutter/pixel_adventure/assets/tiles/Level-02.tmx",
         "Adventure.tsx",
         "level-05.tmx",
-        "level-02.tmx",
         "level-04.tmx",
         "/Users/cid/Downloads/Level-01.tmx",
         "/Users/cid/Downloads/Level-03.tmx",
