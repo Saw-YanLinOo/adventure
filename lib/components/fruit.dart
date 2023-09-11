@@ -4,6 +4,7 @@ import 'package:adventure/adventure.dart';
 import 'package:adventure/components/custom_hitbox.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 class Fruit extends SpriteAnimationComponent
     with HasGameRef<Adventure>, CollisionCallbacks {
@@ -22,6 +23,8 @@ class Fruit extends SpriteAnimationComponent
     width: 12,
     height: 12,
   );
+
+  bool collected = false;
 
   @override
   FutureOr<void> onLoad() {
@@ -45,18 +48,24 @@ class Fruit extends SpriteAnimationComponent
   }
 
   void collidedWithPlayer() async {
-    animation = SpriteAnimation.fromFrameData(
-      game.images.fromCache("Items/Fruits/Collected.png"),
-      SpriteAnimationData.sequenced(
-        amount: 6,
-        stepTime: stepTime,
-        textureSize: Vector2.all(32),
-        loop: false,
-      ),
-    );
+    if (!collected) {
+      collected = true;
+      if (game.playSound) {
+        FlameAudio.play('collect_fruit.wav', volume: game.soundVolume);
+      }
+      animation = SpriteAnimation.fromFrameData(
+        game.images.fromCache("Items/Fruits/Collected.png"),
+        SpriteAnimationData.sequenced(
+          amount: 6,
+          stepTime: stepTime,
+          textureSize: Vector2.all(32),
+          loop: false,
+        ),
+      );
 
-    await animationTicker?.completed;
+      await animationTicker?.completed;
 
-    removeFromParent();
+      removeFromParent();
+    }
   }
 }

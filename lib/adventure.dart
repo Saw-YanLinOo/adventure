@@ -22,6 +22,9 @@ class Adventure extends FlameGame
   List<String> levelNames = ["level-02", "level-02"];
   int currentLevelIndex = 0;
 
+  bool playSound = true;
+  double soundVolume = 1.0;
+
   @override
   Color backgroundColor() {
     return const Color(0xFF211F30);
