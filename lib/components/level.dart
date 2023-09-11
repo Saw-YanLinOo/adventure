@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:adventure/adventure.dart';
 import 'package:adventure/components/background_tile.dart';
+import 'package:adventure/components/checkpoint.dart';
 import 'package:adventure/components/collision_block.dart';
 import 'package:adventure/components/fruit.dart';
 import 'package:adventure/components/player.dart';
@@ -33,27 +34,18 @@ class Level extends World with HasGameRef<Adventure> {
   }
 
   void _scrollingBackground() {
-    final backgroundLayer = level.tileMap.getLayer("BackgroundColor");
-
-    const tileSize = 64;
-
-    final numberTilesY = (game.size.y / tileSize).floor();
-    final numberTilesX = (game.size.x / tileSize).floor();
+    final backgroundLayer = level.tileMap.getLayer("Background");
 
     if (backgroundLayer != null) {
       final backgroundColor =
           backgroundLayer.properties.getValue("BackgroundColor");
 
-      for (double y = 0; y < game.size.y / numberTilesY; y++) {
-        for (double x = 0; x < numberTilesX; x++) {
-          final backgroundTile = BackgroundTile(
-            color: backgroundColor ?? "Gray",
-            position: Vector2(x * tileSize, y * tileSize - tileSize),
-          );
+      final backgroundTile = BackgroundTile(
+        color: backgroundColor ?? "Gray",
+        position: Vector2(0, 0),
+      );
 
-          add(backgroundTile);
-        }
-      }
+      add(backgroundTile);
     }
   }
 
@@ -74,6 +66,14 @@ class Level extends World with HasGameRef<Adventure> {
             );
 
             add(fruit);
+            break;
+          case "Checkpoint":
+            final checkpoint = Checkpoint(
+              position: Vector2(spawnPoint.x, spawnPoint.y),
+              size: Vector2(spawnPoint.width, spawnPoint.height),
+            );
+
+            add(checkpoint);
           default:
         }
       }

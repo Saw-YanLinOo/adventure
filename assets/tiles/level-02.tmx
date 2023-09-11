@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="69">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="23" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="70">
  <tileset firstgid="1" source="Adventure.tsx"/>
  <tileset firstgid="243" source="Pixel Adventure.tsx"/>
  <layer id="1" name="Background" width="40" height="23">
@@ -21,7 +21,7 @@
 24,24,24,24,24,113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,24,24,24,24,24,
 24,24,24,24,24,113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,24,24,24,24,24,
 24,24,24,24,24,113,282,283,284,0,0,0,0,0,0,0,255,256,257,255,256,257,0,0,0,0,0,0,0,0,0,0,0,0,111,24,24,24,24,24,
-24,24,24,24,24,113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,15,0,0,0,111,24,24,24,24,24,
+24,24,24,24,24,113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14,15,255,256,257,111,24,24,24,24,24,
 24,24,24,24,24,113,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,24,24,24,24,24,
 24,24,24,24,24,113,35,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,24,24,24,24,24,
 24,24,24,24,24,113,249,250,251,249,250,251,249,250,251,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,111,24,24,24,24,24,
@@ -49,6 +49,7 @@
   <object id="66" name="Cherries" type="Fruit" x="496" y="128" width="32" height="32"/>
   <object id="67" name="Cherries" type="Fruit" x="496" y="80" width="32" height="32"/>
   <object id="68" name="Orange" type="Fruit" x="288" y="144" width="32" height="32"/>
+  <object id="69" type="Checkpoint" x="480" y="160" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="3" name="Collisions">
   <object id="6" x="80" y="64" width="16" height="272"/>
@@ -56,7 +57,7 @@
   <object id="9" x="544" y="64" width="16" height="256"/>
   <object id="11" x="96" y="320" width="464" height="16"/>
   <object id="19" type="Platform" x="208" y="112" width="96" height="16"/>
-  <object id="23" type="Platform" x="448" y="224" width="48" height="16"/>
+  <object id="23" type="Platform" x="448" y="224" width="96" height="16"/>
   <object id="37" type="Platform" x="96" y="208" width="48" height="16"/>
   <object id="38" type="Platform" x="96" y="160" width="48" height="16"/>
   <object id="39" type="Platform" x="96" y="112" width="48" height="16"/>

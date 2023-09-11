@@ -4,7 +4,6 @@ import 'package:adventure/adventure.dart';
 import 'package:adventure/components/custom_hitbox.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/foundation.dart';
 
 class Fruit extends SpriteAnimationComponent
     with HasGameRef<Adventure>, CollisionCallbacks {
@@ -15,8 +14,6 @@ class Fruit extends SpriteAnimationComponent
     Vector2? position,
     Vector2? size,
   }) : super(position: position, size: size, removeOnFinish: true);
-
-  bool _collected = false;
 
   final double stepTime = 0.05;
   final hitBox = CustomHitbox(
@@ -47,21 +44,19 @@ class Fruit extends SpriteAnimationComponent
     return super.onLoad();
   }
 
-  void collidedWithPlayer() {
-    if (!_collected) {
-      animation = SpriteAnimation.fromFrameData(
-        game.images.fromCache("Items/Fruits/Collected.png"),
-        SpriteAnimationData.sequenced(
-          amount: 6,
-          stepTime: stepTime,
-          textureSize: Vector2.all(32),
-          loop: false,
-        ),
-      );
-      _collected = true;
-    }
-    Future.delayed(const Duration(milliseconds: 400), () {
-      removeFromParent();
-    });
+  void collidedWithPlayer() async {
+    animation = SpriteAnimation.fromFrameData(
+      game.images.fromCache("Items/Fruits/Collected.png"),
+      SpriteAnimationData.sequenced(
+        amount: 6,
+        stepTime: stepTime,
+        textureSize: Vector2.all(32),
+        loop: false,
+      ),
+    );
+
+    await animationTicker?.completed;
+
+    removeFromParent();
   }
 }
