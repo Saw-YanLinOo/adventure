@@ -31,6 +31,7 @@ flutter:
     - assets/images/Background/
     - assets/images/Terrain/
     - assets/images/HUD/
+    - assets/images/Enemies/
     - assets/images/Items/Fruits/
     - assets/images/Items/Checkpoints/Checkpoint/
     - assets/images/Main Characters/

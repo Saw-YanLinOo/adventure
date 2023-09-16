@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:adventure/components/jump_button.dart';
 import 'package:adventure/components/player.dart';
@@ -18,7 +17,7 @@ class Adventure extends FlameGame
   final Player player = Player();
   late CameraComponent cam;
   late final JoystickComponent joystick;
-  bool showControls = false;
+  bool showControls = true;
   List<String> levelNames = ["level-02", "level-02"];
   int currentLevelIndex = 0;
 
@@ -32,7 +31,7 @@ class Adventure extends FlameGame
 
   @override
   FutureOr<void> onLoad() async {
-    //showJoystick = Platform.isAndroid || Platform.isIOS;
+    // showControls = Platform.isAndroid || Platform.isIOS;
     await images.loadAllImages();
     _loadLevel();
     if (showControls) {
