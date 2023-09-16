@@ -1,6 +1,12 @@
 # adventure
 
-A new Flutter project.
+Flutter Flame Game Project 
+
+
+
+# UI
+
+<img width="800" alt="Screenshot 2023-09-14 at 8 12 58 AM" src="https://github.com/Saw-YanLinOo/adventure/assets/63788675/67501e11-2e92-463e-a57f-dea8b1fa612f">
 
 ## Getting Started
 
