@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:adventure/adventure.dart';
 import 'package:adventure/components/checkpoint.dart';
+import 'package:adventure/components/chicken.dart';
 import 'package:adventure/components/collision_block.dart';
 import 'package:adventure/components/custom_hitbox.dart';
 import 'package:adventure/components/fruit.dart';
@@ -16,7 +17,9 @@ enum PlayerState {
   idle,
   running,
   jumping,
+  hit,
   falling,
+  appearing,
   disappearing,
 }
 
@@ -46,6 +49,7 @@ class Player extends SpriteAnimationGroupComponent
 
   bool isOnGround = false;
   bool hasJumped = false;
+  bool gotHit = false;
   List<CollisionBlock> collisionBlocks = [];
 
   bool isFacingRight = true;
@@ -117,6 +121,8 @@ class Player extends SpriteAnimationGroupComponent
       if (other is Fruit) other.collidedWithPlayer();
 
       if (other is Checkpoint && !reachCheckpoint) _reachCheckpoint();
+
+      if (other is Chicken) other.collidedWithPlayer();
     }
     super.onCollisionStart(intersectionPoints, other);
   }
@@ -283,5 +289,32 @@ class Player extends SpriteAnimationGroupComponent
     Future.delayed(waitToChangeDuration, () {
       game.loadNextLevel();
     });
+  }
+
+  _respawn() async {
+    // if (game.playSound) FlameAudio.play("hit.wav", volume: game.soundVolume);
+
+    // const canMoveDuration = Duration(milliseconds: 400);
+    // gotHit = true;
+    // current = PlayerState.hit;
+
+    // await animationTicker?.completed;
+    // animationTicker?.reset();
+
+    // scale.x = 1;
+    // position = startingPosition - Vector2.all(32);
+    // current = PlayerState.appearing;
+
+    // await animationTicker?.completed;
+    // animationTicker?.reset();
+
+    // velocity = Vector2.zero();
+    // position = startingPosition;
+    // _updatePlayerState();
+    // Future.delayed(canMoveDuration, () => gotHit = false);
+  }
+
+  void collidedWithEnemy() {
+    _respawn();
   }
 }

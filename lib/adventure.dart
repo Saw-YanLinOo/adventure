@@ -17,7 +17,7 @@ class Adventure extends FlameGame
   final Player player = Player();
   late CameraComponent cam;
   late final JoystickComponent joystick;
-  bool showControls = true;
+  bool showControls = false;
   List<String> levelNames = ["level-02", "level-02"];
   int currentLevelIndex = 0;
 

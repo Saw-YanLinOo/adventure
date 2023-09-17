@@ -66,7 +66,7 @@
             "scale": 0.8223437499999999,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 320.4256127683831,
+                "x": 319.8175945278358,
                 "y": 176.93330799923996
             }
         },
@@ -78,20 +78,20 @@
             "scale": 0.677,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 321.27031019202354,
+                "x": 319.05465288035447,
                 "y": 185.3766617429838
             }
         },
         "level-02.tmx": {
             "expandedObjectLayers": [
-                3,
-                2
+                2,
+                3
             ],
-            "scale": 0.7489,
-            "selectedLayer": 0,
+            "scale": 1.2724,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 362.5317131793297,
-                "y": 391.90813192682606
+                "x": 358.3778685947815,
+                "y": 256.60169757937757
             }
         },
         "level-04.tmx": {
@@ -122,6 +122,7 @@
         "level-02.tmx"
     ],
     "project": "adventure.tiled-project",
+    "property.type": "float",
     "recentFiles": [
         "level-00.tmx",
         "level-01.tmx",

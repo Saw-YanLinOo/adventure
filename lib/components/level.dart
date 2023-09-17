@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:adventure/adventure.dart';
 import 'package:adventure/components/background_tile.dart';
 import 'package:adventure/components/checkpoint.dart';
+import 'package:adventure/components/chicken.dart';
 import 'package:adventure/components/collision_block.dart';
 import 'package:adventure/components/fruit.dart';
 import 'package:adventure/components/player.dart';
@@ -74,6 +75,16 @@ class Level extends World with HasGameRef<Adventure> {
             );
 
             add(checkpoint);
+          case "Chicken":
+            final offNeg = spawnPoint.properties.getValue("offNeg");
+            final offPos = spawnPoint.properties.getValue("offPos");
+            final chicken = Chicken(
+              position: Vector2(spawnPoint.x, spawnPoint.y),
+              size: Vector2(spawnPoint.width, spawnPoint.height),
+              offNeg: offNeg,
+              offPos: offPos,
+            );
+            add(chicken);
           default:
         }
       }
