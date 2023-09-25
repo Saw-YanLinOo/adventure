@@ -7,6 +7,7 @@ import 'package:adventure/components/chicken.dart';
 import 'package:adventure/components/collision_block.dart';
 import 'package:adventure/components/fruit.dart';
 import 'package:adventure/components/player.dart';
+import 'package:adventure/components/saw.dart';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 
@@ -75,6 +76,21 @@ class Level extends World with HasGameRef<Adventure> {
             );
 
             add(checkpoint);
+            break;
+          case "Saw":
+            final offNeg = spawnPoint.properties.getValue("offNeg");
+            final offPos = spawnPoint.properties.getValue("offPos");
+            final isVertical = spawnPoint.properties.getValue("isVertical");
+
+            final saw = Saw(
+              position: Vector2(spawnPoint.x, spawnPoint.y),
+              size: Vector2(spawnPoint.width, spawnPoint.height),
+              isVertical: isVertical,
+              offNeg: offNeg,
+              offPos: offPos,
+            );
+            add(saw);
+            break;
           case "Chicken":
             final offNeg = spawnPoint.properties.getValue("offNeg");
             final offPos = spawnPoint.properties.getValue("offPos");

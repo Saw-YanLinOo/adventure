@@ -6,6 +6,7 @@ import 'package:adventure/components/chicken.dart';
 import 'package:adventure/components/collision_block.dart';
 import 'package:adventure/components/custom_hitbox.dart';
 import 'package:adventure/components/fruit.dart';
+import 'package:adventure/components/saw.dart';
 import 'package:adventure/components/utils.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
@@ -36,6 +37,7 @@ class Player extends SpriteAnimationGroupComponent
   late final SpriteAnimation idleAnimation;
   late final SpriteAnimation runningAnimation;
   late final SpriteAnimation jumpingAnimation;
+  late final SpriteAnimation hitAnimation;
   late final SpriteAnimation fallingAnimation;
   late final SpriteAnimation disappearingAnimation;
 
@@ -45,6 +47,9 @@ class Player extends SpriteAnimationGroupComponent
 
   double horizontalMovement = 0;
   double moveSpeed = 100;
+
+  Vector2 startingPosition = Vector2.zero();
+
   Vector2 velocity = Vector2.zero();
 
   bool isOnGround = false;
@@ -70,6 +75,7 @@ class Player extends SpriteAnimationGroupComponent
   FutureOr<void> onLoad() {
     _loadAllAnimation();
 
+    startingPosition = Vector2(position.x, position.y);
     // debugMode = kDebugMode;
 
     add(RectangleHitbox(
@@ -84,7 +90,7 @@ class Player extends SpriteAnimationGroupComponent
     accumulatedTime += dt;
 
     while (accumulatedTime >= fixedDeltaTime) {
-      if (!reachCheckpoint) {
+      if (!reachCheckpoint && !gotHit) {
         _updatePlayerState();
         _updatePlayerMovement(fixedDeltaTime);
         _checkHorizontalCollisions();
@@ -122,6 +128,8 @@ class Player extends SpriteAnimationGroupComponent
 
       if (other is Checkpoint && !reachCheckpoint) _reachCheckpoint();
 
+      if (other is Saw) _respawn();
+
       if (other is Chicken) other.collidedWithPlayer();
     }
     super.onCollisionStart(intersectionPoints, other);
@@ -131,6 +139,7 @@ class Player extends SpriteAnimationGroupComponent
     idleAnimation = _loadPlayerAnimation(state: "Idle", amount: 11);
     runningAnimation = _loadPlayerAnimation(state: "Run", amount: 12);
     jumpingAnimation = _loadPlayerAnimation(state: "Jump", amount: 1);
+    hitAnimation = _loadPlayerAnimation(state: "Hit", amount: 7);
     fallingAnimation = _loadPlayerAnimation(state: "Fall", amount: 1);
     disappearingAnimation =
         _loadSpecialAnimation(state: "Desappearing", amount: 7);
@@ -139,6 +148,7 @@ class Player extends SpriteAnimationGroupComponent
       PlayerState.idle: idleAnimation,
       PlayerState.running: runningAnimation,
       PlayerState.jumping: jumpingAnimation,
+      PlayerState.hit: hitAnimation,
       PlayerState.falling: fallingAnimation,
       PlayerState.disappearing: disappearingAnimation,
     };
@@ -292,26 +302,26 @@ class Player extends SpriteAnimationGroupComponent
   }
 
   _respawn() async {
-    // if (game.playSound) FlameAudio.play("hit.wav", volume: game.soundVolume);
+    if (game.playSound) FlameAudio.play("hit.wav", volume: game.soundVolume);
 
-    // const canMoveDuration = Duration(milliseconds: 400);
-    // gotHit = true;
-    // current = PlayerState.hit;
+    const canMoveDuration = Duration(milliseconds: 350);
+    const hitDuration = Duration(milliseconds: 350);
+    gotHit = true;
+    current = PlayerState.hit;
 
-    // await animationTicker?.completed;
-    // animationTicker?.reset();
+    await Future.delayed(hitDuration, () {});
 
-    // scale.x = 1;
-    // position = startingPosition - Vector2.all(32);
-    // current = PlayerState.appearing;
+    scale.x = 1;
+    position = startingPosition - Vector2.all(32);
+    current = PlayerState.disappearing;
 
-    // await animationTicker?.completed;
-    // animationTicker?.reset();
+    await animationTicker?.completed;
+    animationTicker?.reset();
 
-    // velocity = Vector2.zero();
-    // position = startingPosition;
-    // _updatePlayerState();
-    // Future.delayed(canMoveDuration, () => gotHit = false);
+    velocity = Vector2.zero();
+    position = startingPosition;
+    _updatePlayerState();
+    Future.delayed(canMoveDuration, () => gotHit = false);
   }
 
   void collidedWithEnemy() {
