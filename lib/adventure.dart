@@ -14,14 +14,14 @@ class Adventure extends FlameGame
         DragCallbacks,
         HasCollisionDetection,
         TapCallbacks {
-  final Player player = Player();
+  final Player player = Player(character: "Mask Dude");
   late CameraComponent cam;
   late final JoystickComponent joystick;
   bool showControls = false;
   List<String> levelNames = ["level-02", "level-02"];
   int currentLevelIndex = 0;
 
-  bool playSound = true;
+  bool playSound = false;
   double soundVolume = 1.0;
 
   @override

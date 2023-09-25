@@ -62,10 +62,10 @@
     <property name="offPos" type="float" value="12"/>
    </properties>
   </object>
-  <object id="78" type="Saw" x="416" y="160" width="32" height="32">
+  <object id="78" name="Saw" type="Saw" x="416" y="144" width="32" height="32">
    <properties>
     <property name="isVertical" type="bool" value="true"/>
-    <property name="offNeg" type="float" value="6"/>
+    <property name="offNeg" type="float" value="5"/>
     <property name="offPos" type="float" value="4"/>
    </properties>
   </object>
