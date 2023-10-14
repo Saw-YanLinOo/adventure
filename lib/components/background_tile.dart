@@ -4,7 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flame/parallax.dart';
 import 'package:flutter/material.dart';
 
-class BackgroundTile extends ParallaxComponent {
+class BackgroundTile extends ParallaxComponent with HasGameRef {
   final String color;
   BackgroundTile({
     Vector2? position,

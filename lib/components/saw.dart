@@ -28,7 +28,7 @@ class Saw extends SpriteAnimationComponent with HasGameRef<Adventure> {
   @override
   FutureOr<void> onLoad() {
     //priority = -1;
-    debugMode = true;
+    // debugMode = true;
     add(CircleHitbox());
     if (isVertical) {
       rangeNeg = position.y - offNeg * tileSize;

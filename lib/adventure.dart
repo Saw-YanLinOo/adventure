@@ -18,10 +18,10 @@ class Adventure extends FlameGame
   late CameraComponent cam;
   late final JoystickComponent joystick;
   bool showControls = false;
-  List<String> levelNames = ["level-02", "level-02"];
+  List<String> levelNames = ["level-02"];
   int currentLevelIndex = 0;
 
-  bool playSound = false;
+  bool playSound = true;
   double soundVolume = 1.0;
 
   @override
